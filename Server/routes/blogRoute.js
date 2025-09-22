@@ -11,7 +11,8 @@ const auth=require('../middleware/authMiddleware')
 // Create Blog Route
 router.post('/create_blogs', auth, upload.single('image'), async (req, res) => {
   const { title, content, category } = req.body;
-  const image = req.file.path;
+  // const image = req.file.path;
+   const image = req.file ? req.file.path : null;
  
 
 
@@ -21,8 +22,8 @@ router.post('/create_blogs', auth, upload.single('image'), async (req, res) => {
       content,
       category,
       image,
-      userId:req.user.userId,
-      username:req.user.username
+      userId:req.user?.userId,
+      username:req.user?.username
   
     });
 
@@ -30,7 +31,7 @@ router.post('/create_blogs', auth, upload.single('image'), async (req, res) => {
     console.log(newBlog)
     res.json(newBlog);
   } catch (err) {
-    console.error(err);
+    console.error("Error creating blog:", err);
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 });

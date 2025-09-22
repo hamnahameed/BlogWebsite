@@ -13,6 +13,7 @@ import BlogDetailPage from './components/Blogs/BlogDetailsPage';
 import EditBlogPage from './components/Blogs/EditBlogPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CategoryBlogsPage from './components/CategoryBlogsPage';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/' element={<HomePage isAuthenticated={isAuthenticated} />} />
+        <Route path="/category/:categoryName" element={<CategoryBlogsPage />} />
         <Route path="/createBlog"  element={isAuthenticated ? <CreateBlog /> : <Navigate to="/login" />}/>
         <Route
           path="/userblogs"

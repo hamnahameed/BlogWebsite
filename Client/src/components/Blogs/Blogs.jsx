@@ -16,7 +16,8 @@ const Blogs = ({ blogs, selectedCategory }) => {
   useEffect(() => {
     const filtered = selectedCategory === 'All'
       ? blogs
-      : blogs.filter(blog => blog.category.toLowerCase() === selectedCategory.toLowerCase());
+      : blogs.filter(
+        blog => blog.category && blog.category.toLowerCase() === selectedCategory.toLowerCase());
 
     setFilteredBlogs(filtered);
   }, [selectedCategory, blogs]);
@@ -49,10 +50,19 @@ const Blogs = ({ blogs, selectedCategory }) => {
         <Grid container spacing={4}>
           {filteredBlogs.map(blog => (
             <Grid key={blog._id} item xs={12} sm={4}>
-              <Card style={{ maxWidth: 345, margin: 'auto', marginBottom: 20 }}>
+              <Card sx={{ maxWidth: 335,
+                margin: 'auto',
+                marginBottom: 20 ,
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-8px)',
+                boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
+                cursor: 'pointer'
+    }
+}}>
                 <CardMedia
                   component="img"
-                  height="140"
+                  height="170"
                   image={blog.image}
                   alt={blog.title}
                 />
@@ -72,9 +82,9 @@ const Blogs = ({ blogs, selectedCategory }) => {
                   <Typography variant="body2" color="textSecondary" component="p">
                     Published on: {new Date(blog.date).toDateString()}
                   </Typography>
-                  <Button variant="contained" color="primary" onClick={() => handleReadMore(blog._id)}>
-                    Read More
-                  </Button>
+                  <Typography variant="contained" color="purple" onClick={() => handleReadMore(blog._id)}>
+                     Read More →
+                  </Typography>
                 </CardContent>
               </Card>
             </Grid>

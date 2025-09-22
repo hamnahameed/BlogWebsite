@@ -14,10 +14,23 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'blogs',
-    allowedFormats: ['jpg', 'png'],
+    allowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+    use_filename: false,   // ✅ ignores original filename
+    unique_filename: true, // ✅ generates safe random name
   },
 });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only image files are allowed!"), false);
+    }
+  }
+});
+
 
 module.exports = upload

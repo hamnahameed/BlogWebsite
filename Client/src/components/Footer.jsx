@@ -4,7 +4,7 @@ import { Box, Container, Typography } from '@mui/material';
 
 const Footer = () => {
   return (
-    <Box sx={{ bgcolor: 'secondary.main', py: 4, mt: 8 , boxShadow: '6px 4px 0px rgba(0, 0, 0, 0.1)', color: 'white'}}>
+    <Box sx={{ bgcolor: 'purple', py: 4, mt: 8 , boxShadow: '6px 4px 0px rgba(0, 0, 0, 0.1)', color: 'white'}}>
       <Container maxWidth="lg">
         
         <Box mt={4}>

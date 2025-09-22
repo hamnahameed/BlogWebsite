@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Success toast progress bar */
+.Toastify__progress-bar--success {
+  background: purple !important;
+}
+
+/* Success toast close button (cross icon) */
+.Toastify__close-button--success {
+  color: purple !important;
+}
+
+/* Toast icon box */
+.Toastify__toast-icon {
+  color: white !important; /* icon ka color purple */
+  background-color: purple;
+
+}
+
+.Toastify__toast--success .Toastify__toast-icon {
+  display: none;
+}
+
+.Toastify__toast--error .Toastify__toast-icon {
+  display: none;
+}

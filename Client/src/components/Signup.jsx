@@ -123,20 +123,28 @@ const SignupPage = () => {
                 },
               }}
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, backgroundColor:'secondary.main','&:hover': {
-                  backgroundColor: '#AA96DA', // Slightly visible background on hover
-                }, }}
-            >
-              Sign Up
-            </Button>
-            <Typography  align='center'>OR</Typography>
+             <Button
+                          type="submit"
+                          //fullWidth
+                          variant="contained"
+                          sx={{ 
+                            borderRadius:'20px',
+                            mt: 3, 
+                            mb: 2, 
+                            width: "200px",        // ✅ fixed width
+                            display: "block",      // ✅ makes mx: auto work
+                            mx: "auto",   
+                            backgroundColor:'secondary.main',
+                            '&:hover': {
+                              backgroundColor: '#AA96DA', // Slightly visible background on hover
+                            }, }}
+                        >
+                          Signup
+                        </Button>
+            {/* <Typography  align='center'>OR</Typography> */}
 
             <Link to='/login'>
-            <Button
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -146,7 +154,9 @@ const SignupPage = () => {
                 },}}
             >
               Already Have an Account
-            </Button>
+            </Button> */}
+            <Typography  align='center' fontSize='14px'>Already have an Account? Login</Typography>
+            
             </Link>
           </Box>
         </Paper>

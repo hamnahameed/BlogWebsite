@@ -32,9 +32,13 @@ const BlogDetailPage = () => {
           {new Date(blog.date).toDateString()} | By {blog.username}
         </Typography>
         <img src={blog.image} alt={blog.title} style={{ width: '100%', maxHeight: '500px', objectFit: 'cover', marginBottom: '20px' }} />
-        <Typography variant="body1" paragraph>
-          {blog.content}
-        </Typography>
+        <Box>
+          {blog.content.split("\n").filter(p => p.trim() !== "").map((para, index) => (
+            <Typography key={index} variant="body1" paragraph>
+              {para}
+            </Typography>
+    ))}
+  </Box>
       </Box>
     </Container>
   );
